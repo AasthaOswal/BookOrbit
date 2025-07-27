@@ -107,9 +107,10 @@ const login=async (req,res)=>{
 
         res.cookie("token", token, {
             httpOnly: true,
-            sameSite: "Lax",
-            secure: process.env.NODE_ENV === "production",
             maxAge: 24 * 60 * 60 * 1000,
+            secure: process.env.NODE_ENV === "production",
+            sameSite:process.env.NODE_ENV === "production" ? "None" : "Lax",
+            path:"/",
         });
 
         return res.status(200).json({id:existingUser._id,role:existingUser.role,message:"Login Successful!"});
@@ -129,8 +130,9 @@ const logout= async (req,res)=>{
     try{
         res.clearCookie("token", {
             httpOnly: true,
-            sameSite: "Strict",
             secure: process.env.NODE_ENV === "production",
+            sameSite:process.env.NODE_ENV === "production" ? "None" : "Lax",
+            path:"/",
         });
         return res.status(200).json({ message: "Logged out successfully" });
     }catch(error){
