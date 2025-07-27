@@ -54,14 +54,14 @@ const ViewBookDetails=()=>{
     },[]);
 
     useEffect(()=>{
-    if (bookDetails && userFavBooks) {
-        if(userFavBooks.includes(bookDetails._id)){
-            setIsFav(true);
-        } else {
-            setIsFav(false);
+        if (bookDetails && userFavBooks) {
+            if(userFavBooks.includes(bookDetails._id)){
+                setIsFav(true);
+            } else {
+                setIsFav(false);
+            }
         }
-    }
-}, [bookDetails, userFavBooks]);
+    }, [bookDetails, userFavBooks]);
 
 
     const headers={
@@ -72,40 +72,51 @@ const ViewBookDetails=()=>{
         if(!isLoggedIn){
             return toast.error("Please Log in to add in cart.");
         }
-        try {
-            const response=await axios.post(`${BACKEND}/api/v1/cart/${bookDetails._id}`,{},{headers,withCredentials:true});
-            return toast.success(response.data.message);
-        } catch (error) {
-            return toast.error("Error Occured, Please Check Internet or Try Again Later.");
-            // console.log(error);
-        }
+        const promise=axios.post(`${BACKEND}/api/v1/cart/${bookDetails._id}`,{},{headers,withCredentials:true});
+            
+        
+        toast.promise(promise, {pending: "Almost done! Please wait...",})
+            .then((response) => {
+                toast.success(response.data.message);     
+            })
+            .catch((error) => {
+                toast.error("Error Occured, Please Check Internet or Try Again Later.");
+            }
+        );
     }
 
     const addToFav=async ()=>{
         if(!isLoggedIn){
             return toast.error("Please Log in to add in favourites.");
         }
-        try {
-            const response=await axios.post(`${BACKEND}/api/v1/favourites/${id}`,{}, {headers,withCredentials:true} );
-            setIsFav(true);
-            return toast.success(response.data.message);
-        } catch (error) {
-            return toast.error("Error Occured, Please Check Internet or Try Again Later.");
-            // console.log(error);
-        }
+       
+        const promise=axios.post(`${BACKEND}/api/v1/favourites/${id}`,{}, {headers,withCredentials:true} );
+        
+        toast.promise(promise, {pending: "Almost done! Please wait...",})
+            .then((response) => {
+                setIsFav(true);
+                toast.success(response.data.message);     
+            })
+            .catch((error) => {
+                toast.error("Error Occured, Please Check Internet or Try Again Later.");
+            }
+        );
     }
 
     const handleRemoveFav=async ()=>{
-        try{
+        
+        const promise=axios.delete(`${BACKEND}/api/v1/favourites/${bookDetails._id}`, {withCredentials:true});
             
-            const response=await axios.delete(`${BACKEND}/api/v1/favourites/${bookDetails._id}`, {withCredentials:true});
-            setIsFav(false);
-            return toast.success(response.data.message);
-            
-        }catch(error){
-            // console.log(error);
-            return toast.error("Error Occured, Please Check Internet or Try Again Later.");
-        }
+        toast.promise(promise, {pending: "Almost done! Please wait...",})
+            .then((response) => {
+                setIsFav(false);
+                toast.success(response.data.message);     
+            })
+            .catch((error) => {
+                toast.error("Error Occured, Please Check Internet or Try Again Later.");
+            }
+        );
+        
     }
 
     return (
