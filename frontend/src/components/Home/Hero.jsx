@@ -43,9 +43,14 @@ const Hero=()=>{
                     </span>
 
                 </div>
+
+                
             </div>
             
         </div>
+        <p className="text-sm text-center text-zinc-400 mt-8 w-full md:hidden">
+                Powered by free-tier services. You might notice slight delays — thanks for your patience and support!
+        </p>
 
         <div className="w-full h-auto  hidden md:flex flex-row items-center justify-between xl:justify-around  gap-x-12">
             
@@ -73,7 +78,10 @@ const Hero=()=>{
                         <span><FaArrowRightLong className="text-xl text-amber-100" /></span>
                     </span>
 
+
                 </div>
+
+                
                 
             </div>
 
@@ -84,6 +92,10 @@ const Hero=()=>{
             <img src="/books2.png" alt="book_image" className="w-1/2 md:w-2/5 lg:w-[35%] xl:w-4/12 2xl:w-3/12 aspect-square "/>
             
         </div>
+
+        <p className="text-sm text-center text-zinc-400 mt-8 w-full hidden md:block">
+            Powered by free-tier services. You might notice slight delays — thanks for your patience and support!
+        </p>
         </>
     )
 }
