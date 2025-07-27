@@ -61,7 +61,7 @@ const Hero=()=>{
 
 
                 {/* search Feature */}
-                <SearchBar searchParams={searchParams} setSearchParams={setSearchParams} heroComponent={true} />
+                <SearchBar searchParams={searchParams} setSearchParams={setSearchParams} heroComponent={true} /> 
                 
                 
                 
