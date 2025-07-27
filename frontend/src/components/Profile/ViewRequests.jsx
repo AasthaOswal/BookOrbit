@@ -23,22 +23,7 @@ const ViewRequests = ({allRequests}) => {
 		window.scrollTo({ top: 0, behavior: "auto" });
 	}, []);
 	
-	// const getRequests = async () => {
-	// 	console.log("allRequests flag:", allRequests, "typeof:", typeof allRequests);
-	// 	try {
-	// 		const response = await axios.get(`${BACKEND}/api/v1/books/requests`,{withCredentials: true});
-	// 		// console.log(response);
-	// 		if(role === "admin" && !showAll){
-	// 			const filtered = response.data.bookRequestData.filter((request) => request.userId?.role === "admin");
-	// 		setRequests(filtered);
-	// 		}else{
-	// 			setRequests(response.data.bookRequestData);
-	// 		}
-	// 	} catch (error) {
-	// 		console.error("Error fetching requests:", error);
-	// 		return toast.error("Error Occured, Please Check Internet or Try Again Later.");
-	// 	}
-	// };
+	
 	
   	const getRequests = async () => {
 		try {
@@ -75,23 +60,7 @@ const ViewRequests = ({allRequests}) => {
 			<h1 className="text-2xl  mb-8 mx-auto text-center">
 				Requested Books
 			</h1>
-			{/* {requests.map((item, i) => (
-        <div
-          key={i}
-          className="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-4 space-y-2 "
-        >
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-            <p><span className="font-medium text-zinc-300">Title:</span> {item.title}</p>
-            <p><span className="font-medium text-zinc-300">Author:</span> {item.author}</p>
-            <p><span className="font-medium text-zinc-300">Language:</span> {item.language}</p>
-          </div>
-          {role === "admin" && item.userId && (
-            <p className="text-sm text-zinc-400">
-              Requested By: <span className="font-semibold text-white">@{item.userId.username}</span>
-            </p>
-          )}
-        </div>
-      ))} */}
+			
 
 			<div className="flex flex-wrap w-full gap-4 items-center ">
 				{!requests && (

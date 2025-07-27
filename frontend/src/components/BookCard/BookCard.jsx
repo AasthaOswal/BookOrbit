@@ -19,11 +19,6 @@ const BookCard = ({ bookDetail,favourite,setRefreshFav, manageBook,setRefreshMan
 
     const isLoggedIn=localStorage.getItem("isLoggedIn");
 
-    
-
-    const headers={
-        bookid:bookDetail._id,
-    }
 
     useEffect(()=>{
 
@@ -37,40 +32,55 @@ const BookCard = ({ bookDetail,favourite,setRefreshFav, manageBook,setRefreshMan
 
 
     const handleRemoveFav=async ()=>{
-        try{
-            const response=await axios.delete(`${BACKEND}/api/v1/favourites/${bookDetail._id}`, {withCredentials:true});
-            if (typeof setRefreshFav === 'function') {
-                setRefreshFav((prev) => !prev);
-            }
-            setFav(false);
-            return toast.success(response.data.message);
-            
-        }catch(error){
-            return toast.error("Error Occured, Please Check Internet or Try Again Later.");
+        
+        const promise=axios.delete(`${BACKEND}/api/v1/favourites/${bookDetail._id}`, {withCredentials:true});
+        if (typeof setRefreshFav === 'function') {
+            setRefreshFav((prev) => !prev);
         }
+        
+        toast.promise(promise, {pending: "Almost done! Please wait...",})
+            .then((response) => {
+                setFav(false);
+                toast.success(response.data.message);     
+            })
+            .catch((error) => {
+                toast.error("Error Occured, Please Check Internet or Try Again Later.");
+            }
+        );
+        
     }
 
     const handleDeleteBook=async ()=>{
-        try{
-            const response=await axios.delete(`${BACKEND}/api/v1/books/${bookDetail._id}`,{withCredentials:true});
-            setRefreshManageBook((prev)=>!prev);
-            return toast.success(response.data.message);
-        }catch(error){
-            return toast.error("Error Occured, Please Check Internet or Try Again Later.");
-        }
+        
+        const promise=axios.delete(`${BACKEND}/api/v1/books/${bookDetail._id}`,{withCredentials:true});
+       
+        toast.promise(promise, {pending: "Almost done! Please wait...",})
+            .then((response) => {
+                setRefreshManageBook((prev)=>!prev);
+                toast.success(response.data.message);     
+            })
+            .catch((error) => {
+                toast.error("Error Occured, Please Check Internet or Try Again Later.");
+            }
+        );
     };
 
     const addToFav=async ()=>{
-        try{
-            if(!isLoggedIn){
-                return toast.error("Please Login to add in favourites.");
-            }
-            const response=await axios.post(`${BACKEND}/api/v1/favourites/${bookDetail._id}`,{}, {withCredentials:true} );
-            setFav(true);
-            return toast.success(response.data.message);
-        }catch(error){
-            return toast.error("Error Occured, Please Check Internet or Try Again Later.");
+        if(!isLoggedIn){
+            return toast.error("Please Login to add in favourites.");
         }
+        const promise=axios.post(`${BACKEND}/api/v1/favourites/${bookDetail._id}`,{}, {withCredentials:true} );
+
+        toast.promise(promise, {pending: "Almost done! Please wait...",})
+            .then((response) => {
+                setFav(true);
+                toast.success(response.data.message);     
+            })
+            .catch((error) => {
+                toast.error("Error Occured, Please Check Internet or Try Again Later.");
+            }
+        );
+    
     }
 
 
@@ -81,17 +91,23 @@ const BookCard = ({ bookDetail,favourite,setRefreshFav, manageBook,setRefreshMan
 
     
 
-    const addToCart=async ()=>{
-        if(!isLoggedIn){
+    const addToCart = async () => {
+        if (!isLoggedIn) {
             return toast.error("Please Login to Add to Cart.");
         }
-        try{
-            const response=await axios.post(`${BACKEND}/api/v1/cart/${bookDetail._id}`,{},{headers,withCredentials:true});
-            return toast.success(response.data.message);
-        }catch(error){
-            return toast.error("Error Occured, Please Check Internet or Try Again Later.");
-        }
-    }
+
+        const promise = axios.post(`${BACKEND}/api/v1/cart/${bookDetail._id}`, {}, { withCredentials: true });
+
+        toast.promise(promise, {pending: "Almost done! Please wait...",})
+            .then((response) => {
+                toast.success(response.data.message);     
+            })
+            .catch((error) => {
+                toast.error("Error Occured, Please Check Internet or Try Again Later.");
+            }
+        );
+    };
+
 
 
     return (

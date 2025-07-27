@@ -30,6 +30,7 @@ const CategoryBooks2=()=>{
 
     useEffect(()=>{
         handleBooks();
+
     },[]);
 
     
@@ -39,7 +40,7 @@ const CategoryBooks2=()=>{
             const response=await axios.get(`${BACKEND}/api/v1/users/me`, {withCredentials:true});
             setUserFav(response.data.userData.favourite);
         } catch (error) {
-            
+            // console.log(error);
         }
     }
 

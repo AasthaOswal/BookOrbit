@@ -19,33 +19,31 @@ const Dummy=({refreshCart , setRefreshCart, cart, setCart, cartItems, totalCost,
       }
 
       try {
-        // console.log(cartItems);
-        // console.log(totalCost);
+        const promise = axios.post(`${BACKEND}/api/v1/orders`,{ cartItems, totalCost },{ withCredentials: true });
 
-        const response = await axios.post(
-          `${BACKEND}/api/v1/orders`,
-          { cartItems, totalCost },
-          { withCredentials: true }
-        );
+        toast.promise(promise, {
+          pending: "Almost done! Please wait...",
+        });
+
+        const response = await promise;
 
         if (response.status === 200) {
           toast.success("Order Placed Successfully!");
           navigate("/profile/view-orders");
 
-          const clearCartResponse = await axios.put(
+          await axios.put(
             `${BACKEND}/api/v1/cart/clear`,
             {},
             { withCredentials: true }
           );
-          // console.log(clearCartResponse);
         } else {
-          return toast.error("Failed to place order. Try again later.");
+          toast.error("Failed to place order. Try again later.");
         }
       } catch (error) {
-        return toast.error("Something went wrong while placing the order.");
-        // console.error(error);
+        toast.error("Something went wrong while placing the order.");
       }
     };
+
 
     return (
         <div className="w-fit h-fit flex flex-col items-center justify-center gap-4  border-[0.8px] border-zinc-500 px-8 py-8 rounded-2xl bg-zinc-800">

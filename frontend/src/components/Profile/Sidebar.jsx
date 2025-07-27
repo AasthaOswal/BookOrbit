@@ -45,15 +45,20 @@ const Sidebar=()=>{
 
 
     const handleLogOut=async ()=>{
-        try{
-            const response=await axios.post(`${BACKEND}/api/v1/users/logout`,{},{withCredentials:true});
-            toast.success(response.data.message);
-            localStorage.removeItem('isLoggedIn');
-            navigate("/");
-        }catch(error){
-            // console.log(error);
-            return toast.error("Error Occured, Please Check Internet or Try Again Later.");
-        }
+        
+        const promise=axios.post(`${BACKEND}/api/v1/users/logout`,{},{withCredentials:true});
+            
+        toast.promise(promise, {pending: "Almost done! Please wait...",})
+            .then((response) => {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem("role");
+                navigate("/");
+                toast.success(response.data.message);     
+            })
+            .catch((error) => {
+                toast.error("Error Occured, Please Check Internet or Try Again Later.");
+            }
+        );
     };
     
 

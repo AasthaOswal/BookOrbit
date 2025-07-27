@@ -30,7 +30,7 @@ const ViewOrders=({allOrders})=>{
                     setOrders(response.data.orderData);
                 }else{
                     const onlyAdmin = response.data.orderData.filter((order) => order.userId?.role === "admin");
-					// console.log("🟡 admin + !allRequests → SHOW ADMIN‑ONLY:", onlyAdmin.length);
+					// console.log("admin + !allRequests → SHOW ADMIN‑ONLY:", onlyAdmin.length);
 					setOrders(onlyAdmin);
                 }
             }else{
@@ -50,22 +50,30 @@ const ViewOrders=({allOrders})=>{
 
     const handleStatusUpdate = async (orderId, newStatus) => {
         try {
-            const response = await axios.put(
-                `${BACKEND}/api/v1/orders/${orderId}/status`,
-                { status: newStatus },
-                { withCredentials: true }
-            );
-            toast.success(response.data.message);
+            const promise = axios.put(`${BACKEND}/api/v1/orders/${orderId}/status`,{ status: newStatus }, { withCredentials: true });
+
+            toast.promise(promise, {
+            pending: "Almost done! Please wait...",
+            });
+
+            const response = await promise;
+
+            if (response.status === 200) {
+            toast.success(response.data.message); 
 
             // Refresh orders after status update
-            const refreshedOrders = await axios.get(`${BACKEND}/api/v1/orders`, { withCredentials: true });
+            const refreshedOrders = await axios.get(`${BACKEND}/api/v1/orders`, {
+                withCredentials: true,
+            });
             setOrders(refreshedOrders.data.orderData);
+            } else {
+            toast.error("Failed to update status. Please try again later.");
+            }
         } catch (error) {
-            // console.log(error);
-            // console.log(error);
-            return toast.error("Error Occured, Please Check Internet or Try Again Later.");
-        }   
+            toast.error("Error occurred, please check internet or try again later.");
+        }
     };
+
 
 
 
