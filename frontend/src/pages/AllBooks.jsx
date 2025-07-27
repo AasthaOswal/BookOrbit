@@ -15,6 +15,8 @@ const AllBooks=()=>{
 
     const BACKEND = import.meta.env.VITE_BACKEND_URL;
 
+    const [isLoading,setIsLoading]=useState(false);
+
     const [searchParams, setSearchParams] = useSearchParams();
     const [searchBooks, setSearchBooks] = useState();
    
@@ -75,18 +77,21 @@ const AllBooks=()=>{
 
     const fetchBooks = async () => {
         try {
+            setIsLoading(true);
             setResponseMsg(""); // clear old message
             const queryString = searchParams.toString();
             const res = await axios.get(`${BACKEND}/api/v1/books/?${queryString}`);
             // console.log(res);
             
 
-            setSearchBooks(res.data.books || []);  // Ensure fallback value
+            setSearchBooks(res.data.books || []); 
+            setIsLoading(false); // Ensure fallback value
             if (res.data.message) {
                 setResponseMsg(res.data.message);
             }
         } catch (error) {
             // console.error("Error fetching books:", error);
+            setIsLoading(false);
             setSearchBooks([]); // prevent infinite loader
             setResponseMsg(error.response?.data?.message);
             return toast.error("Error Occured, Please Check your input or Try Again Later.");
@@ -113,9 +118,7 @@ const AllBooks=()=>{
         <div className="bg-zinc-900 text-white flex justify-center min-h-screen px-6  sm:px-12 py-12">
             
             <div className="w-full">
-                <div className="flex gap-2 items-center justify-center w-full ">
-                    
-                </div>
+                
                 <SearchBar searchParams={searchParams} setSearchParams={setSearchParams} isReset={isReset} />
 
                 <div className="filters-wrapper flex justify-center items-center m-4 gap-4 flex-wrap">
@@ -124,17 +127,19 @@ const AllBooks=()=>{
                     <button className="border-[0.8px] border-zinc-500 hover:border-amber-100 hover:text-amber-100 hover:bg-zinc-800 px-2 py-1 rounded-xl cursor-pointer active:border-amber-100 active:text-amber-100 active:bg-zinc-800 active:scale-95 transition-all duration-200 ease-in-out" onClick={handleReset}>Reset Filters</button>
                 </div>
 
-                {searchBooks === undefined && <><SimpleLoader/></>}
+                {isLoading===false && !searchBooks && <><SimpleLoader/></>}
 
-                {searchBooks && searchBooks.length===0 && <div className=" px-12 py-6 rounded-2xl w-fit flex flex-col justify-center gap-4 items-center mx-auto mt-12 ">
+                {isLoading===true && <><SimpleLoader/></>}
+
+                {isLoading===false && searchBooks && searchBooks.length===0 && <div className=" px-12 py-6 rounded-2xl w-fit flex flex-col justify-center gap-4 items-center mx-auto mt-12 ">
                     {responseMsg && <p className="text-center text-red-300">{responseMsg}</p> }
                     { <p className="text-center text-amber-100">Book Not Found? Click below to request your desired book.</p> }
                     <button className="flex items-center justify-center w-fit gap-x-4 px-4 py-2 rounded-2xl border-[0.8px] border-zinc-500 bg-zinc-900 hover:border-amber-100 hover:text-amber-100 hover:bg-zinc-800 cursor-pointer  active:border-amber-100 active:text-amber-100 active:bg-zinc-800 active:scale-95 transition-all duration-200 ease-in-out" onClick={handleGoToRequestBook}> <span>Request Book</span> <FaArrowRightLong/> </button>
                 </div> }
 
                 
-                {searchBooks && searchBooks.length>0 && <>
-                    <h1 className="text-center text-3xl mt-12 mb-4">Books</h1>
+                {isLoading===false && searchBooks && searchBooks.length>0 && <>
+                    {isLoading===false && <h1 className="text-center text-3xl mt-12 mb-4">Books</h1>}
                     <div className=" book-card-container grid max-[560px]:grid-cols-1  grid-cols-2 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4  2xl:grid-cols-5 gap-4 ">
                         
                         { searchBooks.map((book,i)=> <BookCard bookDetail={book} key={i} userFavBooks={userFav} allBooks={true}/>) }
