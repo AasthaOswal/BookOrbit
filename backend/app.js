@@ -12,7 +12,11 @@ require("dotenv").config();
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:5173", "https://book-orbit-xi.vercel.app"],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(cookieParser());
 
