@@ -8,13 +8,15 @@ import { useNavigate } from "react-router-dom";
 
 const  ProfileMobileMenu=({userDetails, HandleMobileNav})=>{
 
+     const BACKEND = import.meta.env.VITE_BACKEND_URL;
+
     const role=localStorage.getItem("role");
     const navigate = useNavigate();
 
 
     const handleLogOut = async () => {
     try {
-        const response = await axios.post("http://localhost:5000/api/v1/users/logout", {}, { withCredentials: true });
+        const response = await axios.post(`${BACKEND}/api/v1/users/logout`, {}, { withCredentials: true });
 
         
         localStorage.removeItem('isLoggedIn');

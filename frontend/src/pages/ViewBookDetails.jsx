@@ -8,6 +8,7 @@ import { IoHeart } from "react-icons/io5";
 import axios from "axios";
 import {toast} from "react-toastify"
 import SimpleLoader from "../components/Loader/SimpleLoader";
+import { BiCart } from "react-icons/bi";
 
 
 
@@ -130,37 +131,41 @@ const ViewBookDetails=()=>{
             <div className="flex flex-col justify-center items-center w-full  lg:w-3/5 " >
                 <h2 className="text-2xl  md:text-3xl w-11/12  xl:text-4xl text-bold">{bookDetails.title} </h2>
                 <p className="italic text-zinc-300 mt-2">{bookDetails.author} </p>
-                <div className="flex flex-row items-center justify-center w-11/12 flex-wrap gap-x-4 gap-y-2 mb-4">
+                <div className="flex flex-row items-center justify-center w-11/12 flex-wrap gap-x-4 gap-y-2 mb-4 mt-8">
+
+                    <div className="flex items-center justify-center gap-x-8 flex-wrap w-full">
+                        <button className="vsible sm:hidden text-5xl text-center active:scale-95 hover:text-amber-100 cursor-pointer hover:font-bold w-fit transition-all duration-200  ease-in-out hover:drop-shadow-[0_2px_6px_rgba(253,230,138,0.5)] active:drop-shadow-[0_2px_6px_rgba(253,230,138,0.5)] text-amber-100" onClick={()=>{isFav? handleRemoveFav():addToFav()}}>{isFav? <IoHeart className="text-amber-100"/> : <IoHeartOutline/>}</button>
+                        <button className="vsible sm:hidden text-5xl  text-center  hover:text-amber-100 active:text-amber-100 active:scale-95 cursor-pointer w-fit transition-all duration-200  ease-in-out hover:drop-shadow-[0_2px_6px_rgba(253,230,138,0.5)] active:drop-shadow-[0_2px_6px_rgba(253,230,138,0.5)] text-amber-100" onClick={addToCart}><BiCart className="" /></button>
+                    </div>
                 
                     {isFav ? 
-                        <button className="text-center flex justify-center items-center mt-4 border-[0.8px] border-white px-4 py-2 rounded-2xl  active:scale-95   cursor-pointer transition-all duration-200 ease-in-out hover:bg-zinc-800 hover:text-amber-100 hover:border-amber-100 active:bg-zinc-800 active:text-amber-100 active:border-amber-100 font-semibold" onClick={handleRemoveFav}>
-                            <div className="cursor-pointer flex gap-2 items-center" >
-                                <IoHeart className="text-2xl"/>
-                                <p>Already In Favourites</p>
-                            </div>
+                        <button className="hidden sm:flex text-center  justify-center items-center mt-4 border-[0.8px] border-white px-4 py-2 rounded-2xl  active:scale-95   cursor-pointer transition-all duration-200 ease-in-out hover:bg-zinc-800 hover:text-amber-100 hover:border-amber-100 active:bg-zinc-800 active:text-amber-100 active:border-amber-100 font-semibold" onClick={handleRemoveFav}>
+                            <IoHeart className="text-2xl"/>
+                            <p>Already In Favourites</p>
+                            
                         </button>
                         
                         : 
-                        <button className="text-center flex justify-center items-center mt-4 border-[0.8px] border-white px-4 py-2 rounded-2xl  active:scale-95   cursor-pointer transition-all duration-200 ease-in-out hover:bg-zinc-800 hover:text-amber-100 hover:border-amber-100 active:bg-zinc-800 active:text-amber-100 active:border-amber-100 font-semibold" onClick={addToFav}>
+                        <button className="hidden sm:flex text-center  justify-center items-center mt-4 border-[0.8px] border-white px-4 py-2 rounded-2xl  active:scale-95   cursor-pointer transition-all duration-200 ease-in-out hover:bg-zinc-800 hover:text-amber-100 hover:border-amber-100 active:bg-zinc-800 active:text-amber-100 active:border-amber-100 font-semibold" onClick={addToFav}>
                             <div className="cursor-pointer flex gap-2 items-center" >
                                 <IoHeartOutline className="text-2xl "/>
                                 <p>Add To Favourites</p>
                             </div>
                         </button>
                     }
-                    <button className="text-center flex justify-center items-center mt-4 border-[0.8px] border-white px-4 py-2 rounded-2xl  active:scale-95   cursor-pointer transition-all duration-200 ease-in-out hover:bg-zinc-800 hover:text-amber-100 hover:border-amber-100 active:bg-zinc-800 active:text-amber-100 active:border-amber-100 font-semibold" onClick={addToCart}>
+                    <button className=" hidden sm:flex text-center  justify-center items-center mt-4 border-[0.8px] border-white px-4 py-2 rounded-2xl  active:scale-95   cursor-pointer transition-all duration-200 ease-in-out hover:bg-zinc-800 hover:text-amber-100 hover:border-amber-100 active:bg-zinc-800 active:text-amber-100 active:border-amber-100 font-semibold" onClick={addToCart}>
                         <div className="cursor-pointer flex gap-2 items-center" >
                             <CiShoppingCart className="text-2xl " />
                             <p>Add to Cart</p>
                         </div>
                     </button>
                 </div>
-                <div className="mb-4 mt-4 flex flex-row flex-wrap  justify-around md:justify-center gap-x-8 items-center  w-full border-amber-100">
+                <div className="mb-4 mt-4 flex flex-row flex-wrap  justify-around md:justify-center gap-x-4  sm:gap-x-8 gap-y-4 items-center  w-full border-amber-100">
                     <p className="flex flex-row items-center gap-2"><GrLanguage /> {bookDetails.language} </p>
                     <p className="flex flex-row text-amber-100 font-semibold">₹{bookDetails.price} </p>
                     <p className="flex flex-row items-center gap-2 italic"><BiCategory /> {bookDetails.category} </p>
                 </div>
-                <p className="text-justify mb-4 w-11/12 ">{bookDetails.desc} </p>
+                <p className="text-justify mb-4 w-full sm:w-11/12 ">{bookDetails.desc} </p>
                 
             </div>
         </div>
