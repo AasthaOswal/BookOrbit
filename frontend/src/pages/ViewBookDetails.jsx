@@ -1,0 +1,161 @@
+import { useEffect, useState } from "react";
+import { useParams,Link } from "react-router-dom";
+import { BiCategory } from "react-icons/bi";
+import { GrLanguage } from "react-icons/gr";
+import { CiShoppingCart } from "react-icons/ci";
+import { IoHeartOutline } from "react-icons/io5";
+import { IoHeart } from "react-icons/io5";
+import axios from "axios";
+import {toast} from "react-toastify"
+import SimpleLoader from "../components/Loader/SimpleLoader";
+
+
+
+const ViewBookDetails=()=>{
+
+    const BACKEND = import.meta.env.VITE_BACKEND_URL;
+
+    const { id } = useParams();
+
+    const [bookDetails,setBookDetails]=useState();
+
+    const [userFavBooks,setuserFavBooks]=useState();
+    const [isFav,setIsFav]=useState(false);
+
+    const isLoggedIn=localStorage.getItem("isLoggedIn");
+    
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "auto" });
+    }, []);
+
+    const getBookDetails=async ()=>{
+        try{
+            const response=await axios.get(`${BACKEND}/api/v1/books/${id}`);
+            // console.log(response.data.bookData);
+            setBookDetails(response.data.bookData);
+        }catch(error){
+            // console.log(error);
+            return toast.error("Error Occured, Please Check Internet or Try Again Later.");
+        }
+    }
+    const getUserDetails=async ()=>{
+        try{
+            const response=await axios.get(`${BACKEND}/api/v1/users/me`,{withCredentials:true});
+            // console.log(response.data.userData.favourite);
+            setuserFavBooks(response.data.userData.favourite);
+        }catch(error){
+            // console.log(error);
+        }
+    }
+
+    useEffect(()=>{
+        getUserDetails();
+        getBookDetails();
+    },[]);
+
+    useEffect(()=>{
+    if (bookDetails && userFavBooks) {
+        if(userFavBooks.includes(bookDetails._id)){
+            setIsFav(true);
+        } else {
+            setIsFav(false);
+        }
+    }
+}, [bookDetails, userFavBooks]);
+
+
+    const headers={
+        bookid:id,
+    }
+
+    const addToCart=async ()=>{
+        if(!isLoggedIn){
+            return toast.error("Please Log in to add in cart.");
+        }
+        try {
+            const response=await axios.post(`${BACKEND}/api/v1/cart/${bookDetails._id}`,{},{headers,withCredentials:true});
+            return toast.success(response.data.message);
+        } catch (error) {
+            return toast.error("Error Occured, Please Check Internet or Try Again Later.");
+            // console.log(error);
+        }
+    }
+
+    const addToFav=async ()=>{
+        if(!isLoggedIn){
+            return toast.error("Please Log in to add in favourites.");
+        }
+        try {
+            const response=await axios.post(`${BACKEND}/api/v1/favourites/${id}`,{}, {headers,withCredentials:true} );
+            setIsFav(true);
+            return toast.success(response.data.message);
+        } catch (error) {
+            return toast.error("Error Occured, Please Check Internet or Try Again Later.");
+            // console.log(error);
+        }
+    }
+
+    const handleRemoveFav=async ()=>{
+        try{
+            
+            const response=await axios.delete(`${BACKEND}/api/v1/favourites/${bookDetails._id}`, {withCredentials:true});
+            setIsFav(false);
+            return toast.success(response.data.message);
+            
+        }catch(error){
+            // console.log(error);
+            return toast.error("Error Occured, Please Check Internet or Try Again Later.");
+        }
+    }
+
+    return (
+        <>
+        {!bookDetails && <><div className="h-screen w-screen"><SimpleLoader/></div></> }
+        {bookDetails && (
+            <div className="py-12 px-6 sm:px-12 flex flex-col lg:flex-row min-h-screen bg-zinc-900 text-white justify-center items-center gap-12 text-center"> 
+            <div className="bg-zinc-800 rounded-2xl py-8 sm:mb-0 flex flex-col justify-center items-center  overflow-hidden">
+                <img src={bookDetails.bookImageUrl} className=" w-3/4 rounded-2xl" alt="" />
+            </div>
+            <div className="flex flex-col justify-center items-center w-full  lg:w-3/5 " >
+                <h2 className="text-2xl  md:text-3xl w-11/12  xl:text-4xl text-bold">{bookDetails.title} </h2>
+                <p className="italic text-zinc-300 mt-2">{bookDetails.author} </p>
+                <div className="flex flex-row items-center justify-center w-11/12 flex-wrap gap-x-4 gap-y-2 mb-4">
+                
+                    {isFav ? 
+                        <button className="text-center flex justify-center items-center mt-4 border-[0.8px] border-white px-4 py-2 rounded-2xl  active:scale-95   cursor-pointer transition-all duration-200 ease-in-out hover:bg-zinc-800 hover:text-amber-100 hover:border-amber-100 active:bg-zinc-800 active:text-amber-100 active:border-amber-100 font-semibold" onClick={handleRemoveFav}>
+                            <div className="cursor-pointer flex gap-2 items-center" >
+                                <IoHeart className="text-2xl"/>
+                                <p>Already In Favourites</p>
+                            </div>
+                        </button>
+                        
+                        : 
+                        <button className="text-center flex justify-center items-center mt-4 border-[0.8px] border-white px-4 py-2 rounded-2xl  active:scale-95   cursor-pointer transition-all duration-200 ease-in-out hover:bg-zinc-800 hover:text-amber-100 hover:border-amber-100 active:bg-zinc-800 active:text-amber-100 active:border-amber-100 font-semibold" onClick={addToFav}>
+                            <div className="cursor-pointer flex gap-2 items-center" >
+                                <IoHeartOutline className="text-2xl "/>
+                                <p>Add To Favourites</p>
+                            </div>
+                        </button>
+                    }
+                    <button className="text-center flex justify-center items-center mt-4 border-[0.8px] border-white px-4 py-2 rounded-2xl  active:scale-95   cursor-pointer transition-all duration-200 ease-in-out hover:bg-zinc-800 hover:text-amber-100 hover:border-amber-100 active:bg-zinc-800 active:text-amber-100 active:border-amber-100 font-semibold" onClick={addToCart}>
+                        <div className="cursor-pointer flex gap-2 items-center" >
+                            <CiShoppingCart className="text-2xl " />
+                            <p>Add to Cart</p>
+                        </div>
+                    </button>
+                </div>
+                <div className="mb-4 mt-4 flex flex-row flex-wrap  justify-around md:justify-center gap-x-8 items-center  w-full border-amber-100">
+                    <p className="flex flex-row items-center gap-2"><GrLanguage /> {bookDetails.language} </p>
+                    <p className="flex flex-row text-amber-100 font-semibold">₹{bookDetails.price} </p>
+                    <p className="flex flex-row items-center gap-2 italic"><BiCategory /> {bookDetails.category} </p>
+                </div>
+                <p className="text-justify mb-4 w-11/12 ">{bookDetails.desc} </p>
+                
+            </div>
+        </div>
+        )}
+        </>
+    )
+}
+
+export default ViewBookDetails;
