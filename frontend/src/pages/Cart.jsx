@@ -87,15 +87,18 @@ const Cart=()=>{
 
 
     const handleDelete=async (bookid)=>{
-        try{
-            const response=await axios.delete(`${BACKEND}/api/v1/cart/${bookid}`,{withCredentials:true});
-            toast.success(response.data.message);
-            setRefreshCart(!refreshCart);
-
-        }catch(error){
-            // console.log(error);
-            return toast.error("Error Occured, Please Check Internet or Try Again Later.");
-        }
+    
+        const promise=axios.delete(`${BACKEND}/api/v1/cart/${bookid}`,{withCredentials:true});
+            
+        toast.promise(promise, {pending: "Almost done! Please wait...",})
+            .then((response) => {
+                setRefreshCart(!refreshCart);
+                toast.success(response.data.message);     
+            })
+            .catch((error) => {
+                toast.error("Error Occured, Please Check Internet or Try Again Later.");
+            }
+        );
 
         
     }
