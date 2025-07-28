@@ -92,8 +92,8 @@ const Navbar=()=>{
             </div>
 
             {/* <div className="hidden sm:block border-[0.3px] border-y-zinc-700"></div> */}
-            <div className="mobile-navbar w-full h-16 md:hidden bg-zinc-800 max-[340px]:px-4 px-8 py-2 text-white flex flex-row items-center justify-between sticky top-0 z-[70] shadow-[0_4px_12px_rgba(253,230,138,0.25)]">
-                <Link to="/" className="font-semibold text-amber-100  active:scale-95 transition-all duration-200 ease-in-out cursor-pointer hover:drop-shadow-[0_0px_8px_rgba(253,230,138,0.25)] active:drop-shadow-[0_0px_8px_rgba(253,230,138,0.25)]">
+            <div className="mobile-navbar w-full h-16 md:hidden bg-zinc-800  px-6 py-2 text-white flex flex-row items-center justify-between sticky top-0 z-[70] shadow-[0_4px_12px_rgba(253,230,138,0.25)]">
+                <Link to="/" className="font-semibold text-amber-100  active:scale-95 transition-all duration-100 ease-in-out cursor-pointer hover:drop-shadow-[0_0px_16px_rgba(253,230,138,0.25)] active:drop-shadow-[0_0px_16px_rgba(253,230,138,0.25)]">
                 <div className="logo flex items-center gap-2">
                     <img src="/bookLogo.png" className="h-6 w-6" alt="" />
                     <span className="text-xl ">BookOrbit</span>
@@ -108,7 +108,7 @@ const Navbar=()=>{
                         navigate("/cart");
                         }
                     }}>
-                        <span className="flex items-center justify-center  gap-x-1 px-2 py-1 border-amber-100 border-[0.8px] rounded-xl active:scale-95 hover:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] active:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-200 ease-in-out  ">
+                        <span className="flex items-center justify-center  gap-x-1 px-2 py-1 border-amber-100 border-[0.8px] rounded-xl active:scale-95 hover:shadow-[0px_0px_16px_rgba(253,230,138,0.5)] active:shadow-[0px_0px_16px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-100 ease-in-out  ">
                             <span className="text-xl text-amber-100"><BiCart/></span>
                             <span className="text-amber-100">Cart</span>
                         </span>
@@ -119,7 +119,7 @@ const Navbar=()=>{
             </div>
             {/* <div className="border-[0.3px] border-y-zinc-700"></div> */}
             {MobileNav && 
-                <motion.div className=" bg-zinc-800  overflow-auto md:hidden fixed top-[56px] right-0 text-white flex flex-col justify-around items-center gap-4 w-full h-[calc(100vh-64px)] z-60 overflow-y-auto mt-2"  initial={{ opacity: 0, scale: 0.95 }}
+                <motion.div className=" bg-zinc-800  overflow-auto md:hidden fixed top-[56px] right-0 text-white flex flex-col justify-around items-center gap-4 w-full h-[calc(100dvh-64px)] z-60 overflow-y-auto mt-2"  initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4 }}>
                     {/* <hr className="w-full border-amber-100 border-1 opacity-10" /> */}

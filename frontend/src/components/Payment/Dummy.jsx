@@ -49,18 +49,18 @@ const Dummy=({refreshCart , setRefreshCart, cart, setCart, cartItems, totalCost,
         <div className="w-fit h-fit flex flex-col items-center justify-center gap-4  border-[0.8px] border-zinc-500 px-8 py-8 rounded-2xl bg-zinc-800">
             
 
-          <p className="text-center font-medium ">
+          <p className="text-justify sm:text-center font-medium ">
             <span><FiAlertTriangle className="inline text-yellow-400 mr-1" /></span> This is a <span className="text-amber-300 font-semibold">dummy payment simulation</span> designed for demonstration purposes. No actual payment is processed.
           </p>
-          <p className="text-center ">
+          <p className="text-justify sm:text-center ">
             Clicking <span className="font-semibold text-green-300">"Go Ahead"</span> will <span className="italic font-semibold">confirm your order</span> and simulate successful payment. You'll be redirected to view your order.
           </p>
-          <p className="text-center">
+          <p className="text-justify sm:text-center">
             If you'd like to <span className=" italic font-semibold">modify your cart or cancel,</span>  click <span className="font-semibold text-red-300">"Go Back"</span> to return to the cart page.
           </p>
 
 
-            <div className="flex items-center justify-center gap-4 flex-wrap w-full">
+            <div className="flex items-center justify-center gap-4 flex-wrap w-full mt-4">
                 <button className="flex items-center justify-center  gap-x-1 px-2 py-1 border-red-300 border-[0.8px] rounded-xl active:scale-95 hover:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] active:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-200 ease text-red-300"  onClick={()=>setStep("cart")}>  <span className="p-1"><FaArrowLeftLong/></span>Go Back</button>
 
                 <button className="flex items-center justify-center  gap-x-1 px-2 py-1 border-green-300 border-[0.8px] rounded-xl active:scale-95 hover:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] active:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-200 ease text-green-300" onClick={handleSubmit}>Go Ahead <span className="p-1"><FaArrowRightLong/></span> </button>

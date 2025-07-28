@@ -129,7 +129,7 @@ const Signup2=()=>{
                         <input type="email" id="email" name="email" placeholder="Email" className="p-2 rounded-xl outline-none border-[0.8px] border-zinc-500 focus:border-amber-100 hover:border-amber-100 text-white transition-all duration-200 ease-in-out " value={formData.email} onChange={handleChange} required />
                     </div>
 
-                    <div className="grid grid-cols-2 items-center justify-center gap-4 w-full mb-2">
+                    <div className="flex flex-col sm:grid grid-cols-2 sm:items-center sm:justify-center gap-4 w-full mb-2">
                         <div className="flex flex-col flex-grow flex-shrink  ">
                             <label className="p-2" htmlFor="contactNumber">Phone</label>
                             <input type="text" maxLength={10} pattern="\d*" id="contactNumber" name="contactNumber" placeholder="eg: 9999999999" className="p-2  rounded-xl outline-none border-[0.8px] border-zinc-500 hover:border-amber-100 focus:border-amber-100 text-white transition-all duration-200 ease-in-out " value={formData.contactNumber} onChange={handleChange} required onWheel={(e) => e.target.blur()} min={0}/>
