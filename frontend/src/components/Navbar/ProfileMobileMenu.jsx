@@ -6,12 +6,13 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 
-const  ProfileMobileMenu=({userDetails, HandleMobileNav})=>{
+const  ProfileMobileMenu=({userDetails ,HandleMobileNav})=>{
 
      const BACKEND = import.meta.env.VITE_BACKEND_URL;
 
     const role=localStorage.getItem("role");
     const navigate = useNavigate();
+
 
 
     const handleLogOut = async () => {
@@ -35,7 +36,9 @@ const  ProfileMobileMenu=({userDetails, HandleMobileNav})=>{
         <div className='flex flex-col items-center justify-around gap-4 py-4  h-full w-full'>
             <div className="flex flex-row items-center justify-center gap-x-2 flex-wrap flex-grow">
                 <img src={'/avatarImg.svg'} alt="" className='h-10 w-10 '/>
-                <p className="text-amber-100 font-bold text-xl italic">{userDetails?.username}</p>
+                {userDetails ? (<p className="text-amber-100 font-bold text-xl italic">{userDetails.username}</p>)
+                : (<p className="text-white italic animate-pulse">Loading...</p>)}
+
             </div>
 
             <div className='profile-links flex flex-col justify-around items-center flex-grow gap-2 text-center'>

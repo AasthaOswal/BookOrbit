@@ -84,7 +84,7 @@ const Navbar=()=>{
                     }}>
                         <span className="flex items-center justify-center text-amber-100  gap-x-1 px-2 py-1 border-amber-100 border-[0.8px] rounded-xl active:scale-95 hover:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-200 ease ">
                             <span className="text-xl text-amber-100"><BiCart/></span>
-                            <span className="text-amber-100">Cart</span>
+                            <span className="text-amber-100  ">Cart</span>
                         </span>
                     </span>
                 </div>
@@ -92,28 +92,28 @@ const Navbar=()=>{
             </div>
 
             {/* <div className="hidden sm:block border-[0.3px] border-y-zinc-700"></div> */}
-            <div className="mobile-navbar w-full h-16 md:hidden bg-zinc-800  px-6 py-2 text-white flex flex-row items-center justify-between sticky top-0 z-[70] shadow-[0_4px_12px_rgba(253,230,138,0.25)]">
-                <Link to="/" className="font-semibold text-amber-100  active:scale-95 transition-all duration-100 ease-in-out cursor-pointer hover:drop-shadow-[0_0px_16px_rgba(253,230,138,0.25)] active:drop-shadow-[0_0px_16px_rgba(253,230,138,0.25)]">
+            <div className="mobile-navbar w-full h-16 md:hidden bg-zinc-800  px-6 py-2 text-white flex flex-row items-center justify-between sticky top-0 z-[70] shadow-[0_4px_12px_rgba(253,230,138,0.25)]  flex-grow flex-shrink flex-wrap">
+                <Link to="/" className="font-semibold text-amber-100  active:scale-95 transition-all duration-100 ease-in-out cursor-pointer hover:drop-shadow-[0_0px_16px_rgba(253,230,138,0.25)] active:drop-shadow-[0_0px_16px_rgba(253,230,138,0.25)]  flex-shrink">
                 <div className="logo flex items-center gap-2">
-                    <img src="/bookLogo.png" className="h-6 w-6" alt="" />
-                    <span className="text-xl ">BookOrbit</span>
+                    <img src="/bookLogo.png" className="h-6 w-6  flex-shrink" alt="BookOrbit" />
+                    <span className="max-[330px]:text-base  max-[330px]:font-semibold  text-xl  flex-shrink">BookOrbit</span>
                 </div>
                 </Link>
                 
                 <div className="links-smaller-screens md:hidden flex gap-x-3 justify-center items-center " >
-                    <span className=" hover:font-semibold hover:text-amber-100 active:text-amber-100 active:font-semibold active:scale-95 transition-all duration-200 ease-in-out cursor-pointer"  onClick={() => {
+                    <span className=" hover:font-semibold hover:text-amber-100 active:text-amber-100 active:font-semibold active:scale-95 transition-all duration-200 ease-in-out cursor-pointer  flex-shrink"  onClick={() => {
                         if (!isLoggedIn) {
                         return toast.error("Please login to access cart.");
                         } else {
                         navigate("/cart");
                         }
                     }}>
-                        <span className="flex items-center justify-center  gap-x-1 px-2 py-1 border-amber-100 border-[0.8px] rounded-xl active:scale-95 hover:shadow-[0px_0px_16px_rgba(253,230,138,0.5)] active:shadow-[0px_0px_16px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-100 ease-in-out  ">
-                            <span className="text-xl text-amber-100"><BiCart/></span>
-                            <span className="text-amber-100">Cart</span>
+                        <span className="flex items-center justify-center  gap-x-1 px-2 py-1 border-amber-100 border-[0.8px] rounded-xl active:scale-95 hover:shadow-[0px_0px_16px_rgba(253,230,138,0.5)] active:shadow-[0px_0px_16px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-100 ease-in-out  flex-shrink max-[330px]:border-none max-[330px]:p-0  ">
+                            <span className="text-xl text-amber-100 max-[330px]:text-3xl   flex-shrink"><BiCart/></span>
+                            <span className="text-amber-100 max-[330px]:hidden flex-shrink">Cart</span>
                         </span>
                     </span>
-                    <IoIosMenu className="active:text-amber-100 active:scale-95 text-3xl font-bold" onClick={HandleMobileNav}/>
+                    <IoIosMenu className="active:text-amber-100 active:scale-95 text-3xl font-bold  flex-shrink" onClick={HandleMobileNav}/>
                     
                 </div>
             </div>
@@ -129,20 +129,9 @@ const Navbar=()=>{
                     
 
                     {isLoggedIn? 
-                        <> 
-                        {userDetails && <ProfileMobileMenu userDetails={userDetails} HandleMobileNav={HandleMobileNav} />}
-                        {/* <Link to="/profile" className="px-4 hover:text-amber-100">
-                            {role === "user" ? "Profile" : <></>}
-                            {role ==="admin" ? "Admin Profile" : <></>}
-                        </Link> */}
-                        
-                        </> 
+                        <> <ProfileMobileMenu userDetails={userDetails} HandleMobileNav={HandleMobileNav} /></> 
                         : 
-                        // <div className="w-full flex flex-col items-center justify-center gap-y-6">
-                        //     <Link to="/all-books" className="px-4 hover:text-amber-100" onClick={HandleMobileNav} >All-Books</Link>
-                        //     <Link to="/login" className="px-4  hover:text-amber-100" onClick={HandleMobileNav} >Login</Link>
-                        //     <Link to="/signup" className="px-4 hover:text-amber-100" onClick={HandleMobileNav} >Signup</Link>
-                        // </div>
+                        
                         <div className="w-full h-full flex flex-col justify-around items-center py-6 text-center">
                             {/* Welcome Message */}
                             <div className="text-amber-100 text-lg italic flex justify-center items-center gap-x-2 text-center hover:font-semibold hover:text-amber-100 active:text-amber-100 active:font-semibold active:scale-95 transition-all duration-200 ease-in-out cursor-pointer">
