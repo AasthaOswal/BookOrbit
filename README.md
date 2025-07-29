@@ -11,7 +11,7 @@ By giving a local bookstore owner a clean, fast, and user-friendly storefront, B
 
 ## 🌐 Live Demo
 
-🔗(https://book-orbit-2025.vercel.app)
+🔗 https://book-orbit-2025.vercel.app
 
 ---
 
@@ -78,6 +78,6 @@ Hosting: Vercel (Frontend), Render (Backend)
 If you notice any bugs, have feedback, or want to collaborate, feel free to reach out:
 
 📧 Email: aasthaoswal29@gmail.com  
-📬 LinkedIn: (www.linkedin.com/in/aastha-oswal-94a179344)
+📬 LinkedIn: www.linkedin.com/in/aastha-oswal-94a179344
 
 
