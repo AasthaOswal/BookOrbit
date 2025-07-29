@@ -11,7 +11,8 @@ By giving a local bookstore owner a clean, fast, and user-friendly storefront, B
 
 ## 🌐 Live Demo
 
-🔗 https://book-orbit-2025.vercel.app
+<a href="https://book-orbit-2025.vercel.app" target="_blank">🔗 https://book-orbit-2025.vercel.app</a>
+
 
 ---
 
