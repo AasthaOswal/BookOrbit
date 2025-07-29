@@ -71,3 +71,13 @@ Backend: Node.js + Express.js
 Database: MongoDB  
 Hosting: Vercel (Frontend), Render (Backend)
 
+---
+
+## 🛠️ Found a Bug or Have a Suggestion?
+
+If you notice any bugs, have feedback, or want to collaborate, feel free to reach out:
+
+📧 Email: aasthaoswal29@gmail.com  
+📬 LinkedIn: [Your LinkedIn Profile](www.linkedin.com/in/aastha-oswal-94a179344)
+
+
