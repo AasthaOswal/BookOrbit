@@ -163,7 +163,7 @@ const Cart=()=>{
             
             {step==="cart" && cart && cart.length===0 && <div className="flex flex-row flex-wrap gap-8 h-full w-full items-center justify-center">
                 <h2 className="text-xl">Empty Cart</h2>
-                <img src="/emptyCart.svg" className=" w-1/3 h-1/3 sm:w-1/5 sm:h-1/5 opacity-80" alt="" />
+                <img src="/emptyCart.svg" loading="lazy" className=" w-1/3 h-1/3 sm:w-1/5 sm:h-1/5 opacity-80" alt="" />
             </div> }
 
             {step==="cart" && isLoading && !isError && <div className="h-full w-full flex justify-center items-center"><SimpleLoader/></div>  }

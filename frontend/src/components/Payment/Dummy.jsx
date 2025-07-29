@@ -4,6 +4,9 @@ import { toast } from "react-toastify";
 import { FiAlertTriangle } from "react-icons/fi";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { useState } from "react";
+import SimpleLoader from "../Loader/SimpleLoader";
+
 
 
 
@@ -11,10 +14,14 @@ const Dummy=({refreshCart , setRefreshCart, cart, setCart, cartItems, totalCost,
 
   const BACKEND = import.meta.env.VITE_BACKEND_URL;
 
+  const [isSubmitting,setIsSubmitting]=useState(false);
+
     const navigate=useNavigate();
     
     const handleSubmit = async () => {
+      setIsSubmitting(true);
       if (!cartItems || cartItems.length === 0 || totalCost <= 0) {
+        setIsSubmitting(false);
         return toast.error("Your cart is empty or total cost is invalid.");
       }
 
@@ -28,6 +35,7 @@ const Dummy=({refreshCart , setRefreshCart, cart, setCart, cartItems, totalCost,
         const response = await promise;
 
         if (response.status === 200) {
+          setIsSubmitting(false);
           toast.success("Order Placed Successfully!");
           navigate("/profile/view-orders");
 
@@ -37,9 +45,11 @@ const Dummy=({refreshCart , setRefreshCart, cart, setCart, cartItems, totalCost,
             { withCredentials: true }
           );
         } else {
+          setIsSubmitting(false);
           toast.error("Failed to place order. Try again later.");
         }
       } catch (error) {
+        setIsSubmitting(false);
         toast.error("Something went wrong while placing the order.");
       }
     };
@@ -60,11 +70,16 @@ const Dummy=({refreshCart , setRefreshCart, cart, setCart, cartItems, totalCost,
           </p>
 
 
-            <div className="flex items-center justify-center gap-4 flex-wrap w-full mt-4">
+            {isSubmitting===false && <div className="flex items-center justify-center gap-4 flex-wrap w-full mt-4">
                 <button className="flex items-center justify-center  gap-x-1 px-2 py-1 border-red-300 border-[0.8px] rounded-xl active:scale-95 hover:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] active:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-200 ease text-red-300"  onClick={()=>setStep("cart")}>  <span className="p-1"><FaArrowLeftLong/></span>Go Back</button>
 
                 <button className="flex items-center justify-center  gap-x-1 px-2 py-1 border-green-300 border-[0.8px] rounded-xl active:scale-95 hover:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] active:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-200 ease text-green-300" onClick={handleSubmit}>Go Ahead <span className="p-1"><FaArrowRightLong/></span> </button>
-            </div>
+            </div>}
+
+            {isSubmitting===true && <div className="mx-auto mt-4 h-auto w-full">
+                <p className="text-red-300 text-xl text-center px-4 sm:px-8 text-wrap  text-semibold mb-2">Please wait while we are processing the form.</p>
+                <SimpleLoader/>
+            </div>} 
             
         </div>
     );
