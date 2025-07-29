@@ -78,6 +78,6 @@ Hosting: Vercel (Frontend), Render (Backend)
 If you notice any bugs, have feedback, or want to collaborate, feel free to reach out:
 
 📧 Email: aasthaoswal29@gmail.com  
-📬 LinkedIn: [Your LinkedIn Profile](www.linkedin.com/in/aastha-oswal-94a179344)
+📬 LinkedIn: [My LinkedIn Profile](www.linkedin.com/in/aastha-oswal-94a179344)
 
 
