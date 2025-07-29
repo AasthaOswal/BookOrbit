@@ -13,7 +13,7 @@ By giving a local bookstore owner a clean, fast, and user-friendly storefront, B
 
 🔗 https://book-orbit-2025.vercel.app
 
-> ⚠️ Please **right-click** and choose **“Open in new tab”**, or press `Ctrl + Click` (Windows) / `Cmd + Click` (Mac) to continue browsing this page alongside.
+> ⚠️ Please **right-click** and choose **“Open in new tab”**, or press `Ctrl + Click` (Windows) / `Cmd + Click` (Mac) to keep this GitHub page open.
 
 
 ---
