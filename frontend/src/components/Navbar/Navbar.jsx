@@ -8,6 +8,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { MdLogin } from "react-icons/md";
 import { GiSpotedFlower } from "react-icons/gi";
+import { IoIosClose } from "react-icons/io";
 
 
 const Navbar=()=>{
@@ -113,7 +114,7 @@ const Navbar=()=>{
                             <span className="text-amber-100 max-[330px]:hidden flex-shrink">Cart</span>
                         </span>
                     </span>
-                    <IoIosMenu className="active:text-amber-100 active:scale-95 text-3xl font-bold  flex-shrink" onClick={HandleMobileNav}/>
+                    {MobileNav===true ? <IoIosClose className="active:text-amber-100 active:scale-95 text-3xl font-bold  flex-shrink" onClick={HandleMobileNav}/> : <IoIosMenu className="active:text-amber-100 active:scale-95 text-3xl font-bold  flex-shrink" onClick={HandleMobileNav}/>}
                     
                 </div>
             </div>

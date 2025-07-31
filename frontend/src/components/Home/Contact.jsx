@@ -64,7 +64,7 @@ const Contact = () => {
    
     <div className="w-full h-auto lg:h-[600px]  bg-zinc-900 text-white gap-12  flex flex-col lg:flex-row items-center justify-around">
     
-      <div className='contact-details py-8 px-8  h-full  w-full sm:w-10/12 lg:w-6/12 2xl:w-5/12 flex flex-col justify-around gap-y-4   bg-zinc-800 border-[0.8px] border-zinc-500 rounded-2xl'>
+      <div className='contact-details py-8 max-[370px]:px-4 px-8  h-full  w-full sm:w-10/12 lg:w-6/12 2xl:w-5/12 flex flex-col justify-around gap-y-4  bg-zinc-800 border-[0.8px] border-zinc-500 rounded-2xl'>
 
         <p className='flex flex-col items-center  justify-center gap-x-2  w-full'> 
           <span className='flex justify-center gap-x-2 text-amber-100 font-semibold items-center text-xl' ><MdLocalPhone/> Call</span> 
@@ -76,11 +76,11 @@ const Contact = () => {
         </p>
         <p className='flex flex-col items-center  justify-center gap-x-2 w-full'>
           <span className='flex justify-center gap-x-2 text-amber-100 font-semibold  items-center text-xl' ><HiOutlineLocationMarker />Address </span>
-          <span className='text-center w-10/12'> Shop No.5, Phoolwati Complex, Chandra Road, Near Hanuman Mandir, MIDC, Dombivali-East</span>
+          <span className='text-center w-full sm:w-10/12'> Shop No.5, Phoolwati Complex, Chandra Road, Near Hanuman Mandir, MIDC, Dombivali-East</span>
         </p>
         <p className='flex items-center justify-center gap-x-2  text-semibold italic  text-green-300 w-full'>
           <span className='self-start  mt-1 text-xl'><HiOutlineCheck/></span>
-          <span className='text-center'>We usually reply within 24 hours.</span>
+          <span className='text-justify  sm:text-center'>We usually reply within 24 hours.</span>
         </p>
 
         <p className='text-red-300 text-center '>
