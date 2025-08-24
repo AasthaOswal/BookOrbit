@@ -114,7 +114,7 @@ const CategoryBooks2=()=>{
                 
                 
                 <h1 className="text-xl text-center md:text-2xl font-bold my-4 text-white">
-                    <div className="flex flex-wrap flex-grow sm:flex-row gap-x-2 text-center items-center justify-center mb-12">
+                    <div className="flex flex-wrap flex-grow sm:flex-row gap-x-2 text-center items-center justify-center mt-8 mb-12">
                         <span className="text-center">Popular Genres: </span> 
                         <span className="text-amber-100 italic text-center">Self-Help Books</span>
                     </div>
