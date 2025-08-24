@@ -78,10 +78,10 @@ const Footer=()=>{
                 <span><IoBuildOutline /></span> Built With
               </h4>
               <ul className="text-white text-sm space-y-2 ">
-                <li className="flex justify-center items-center gap-x-2"><span className="text-2xl"><SiMongodb/></span> MongoDB</li>
-                <li className="flex justify-center items-center gap-x-2"><span className="text-2xl"><SiExpress/></span> Express</li>
-                <li className="flex justify-center items-center gap-x-2"><span className="text-2xl"><SiReact/></span> React</li>
-                <li className="flex justify-center items-center gap-x-2"><span className="text-2xl"><FaNode/></span> Nodejs</li>
+                <li className="flex justify-center items-center gap-x-2"><span><SiMongodb/></span> MongoDB</li>
+                <li className="flex justify-center items-center gap-x-2"><span><SiExpress/></span> Express</li>
+                <li className="flex justify-center items-center gap-x-2"><span><SiReact/></span> React</li>
+                <li className="flex justify-center items-center gap-x-2"><span><FaNode/></span> Nodejs</li>
               </ul>
             </div>
           </div>
