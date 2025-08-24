@@ -48,7 +48,7 @@ const Hero=()=>{
             </div>
             
         </div>
-        <p className="text-sm text-center text-zinc-400 mt-8 w-full md:hidden">
+        <p className="text-sm text-center text-red-300 mt-8 w-full md:hidden">
                 Powered by free-tier services. You might notice slight delays — thanks for your patience and support!
         </p>
 
