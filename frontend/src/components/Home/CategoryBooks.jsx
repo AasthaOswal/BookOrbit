@@ -78,19 +78,10 @@ const CategoryBooks2=()=>{
     return ( 
         <>
             <div className=" my-16 max-w-screen flex-col justify-center items-center">
-                {/* <h2 className="text-xl text-center md:text-2xl font-bold mb-4 text-amber-100">Popular Genres</h2> */}
-                
-                {/* <div className="cards-container">
-                    <div className="cards-wrapper">
-                        {Books.slice(0, 4).map((book, i) => (
-                        <BookCard key={i} bookDetail={book} home={true} userFavBooks={userFav}/>
-                        ))}
-                    </div>
-                </div> */}
                 
             
-                <h1 className="text-xl text-center md:text-2xl font-bold my-4 text-white">
-                    <div className="flex flex-wrap flex-grow sm:flex-row gap-x-2 text-center items-center justify-center mb-12">
+                <h1 className="text-xl text-center md:text-2xl font-bold mb-8 text-white">
+                    <div className="flex flex-wrap flex-grow sm:flex-row gap-x-2 text-center items-center justify-center">
                         <span className="text-center">Popular Genres: </span> 
                         <span className="text-amber-100 italic text-center">Romance Books</span>
                     </div>
@@ -113,8 +104,8 @@ const CategoryBooks2=()=>{
 
                 
                 
-                <h1 className="text-xl text-center md:text-2xl font-bold my-4 text-white">
-                    <div className="flex flex-wrap flex-grow sm:flex-row gap-x-2 text-center items-center justify-center my-12">
+                <h1 className="text-xl text-center md:text-2xl font-bold mb-8 mt-12 text-white">
+                    <div className="flex flex-wrap flex-grow sm:flex-row gap-x-2 text-center items-center justify-center">
                         <span className="text-center">Popular Genres: </span> 
                         <span className="text-amber-100 italic text-center">Self-Help Books</span>
                     </div>

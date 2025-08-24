@@ -52,7 +52,7 @@ const Hero=()=>{
                 Powered by free-tier services. You might notice slight delays — thanks for your patience and support!
         </p>
 
-        <div className="w-full h-auto  hidden md:flex flex-row items-center justify-between xl:justify-around  gap-x-12">
+        <div className="w-full h-auto  hidden md:flex flex-row items-center justify-between xl:justify-around  gap-x-12 ">
             
             <div className="flex flex-col items-center justify-center  gap-4 ">
 
