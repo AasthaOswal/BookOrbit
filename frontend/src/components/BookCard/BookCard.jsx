@@ -111,7 +111,7 @@ const BookCard = ({ bookDetail,favourite,setRefreshFav, manageBook,setRefreshMan
 
 
     return (
-        <div className="book-card  rounded-2xl  border-[0.8px] border-zinc-500 hover:border-amber-100 active:border-amber-100  px-2 pt-8 pb-4 m-4 flex flex-col bg-zinc-800 items-center gap-2 text-white overflow-hidden transition-all duration-200 ease-in-out" >
+        <div className="book-card  rounded-2xl  border-[0.8px] border-zinc-500 hover:border-amber-100 active:border-amber-100  px-2 pt-8 pb-8 m-4 flex flex-col bg-zinc-800 items-center gap-2 text-white overflow-hidden transition-all duration-200 ease-in-out" >
             <Link to={`/view-book-details/${bookDetail._id}` }  className="active:scale-95">
             <div className="flex items-center justify-center px-4 "  >
                 {/* v-4 */}
@@ -164,7 +164,7 @@ const BookCard = ({ bookDetail,favourite,setRefreshFav, manageBook,setRefreshMan
                 </button>
                 
             </div> }
-            <Link to={`/view-book-details/${bookDetail._id}`} className="mt-2 text-amber-100 underline hover:font-semibold active:font-semibold active:scale-95 ">View Details</Link>
+            <Link to={`/view-book-details/${bookDetail._id}`} className="mt-2 text-amber-100 underline hover:font-semibold active:font-semibold active:scale-95 cursor-pointer touch-manipulation">View Details</Link>
         </div>
 
     );

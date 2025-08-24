@@ -33,11 +33,11 @@ const Hero=()=>{
 
                 
                 <div className="flex flex-wrap items-center justify-center gap-4 w-full">
-                    <button className="flex  items-center justify-center  gap-x-2 px-4 py-2 border-zinc-500  hover:bg-zinc-800 active:bg-zinc-800  border-[0.8px] hover:border-amber-100 active:border-amber-100 rounded-2xl active:scale-95 active:text-amber-100 hover:text-amber-100 cursor-pointer transition-all duration-300 ease-in-out " >
+                    <button className="flex  items-center justify-center  gap-x-2 px-4 py-2 border-zinc-500  hover:bg-zinc-800 active:bg-zinc-800  border-[0.8px] hover:border-amber-100 active:border-amber-100 rounded-2xl active:scale-95 active:text-amber-100 hover:text-amber-100 cursor-pointer transition-all duration-300 ease-in-out " onClick={()=>navigate("/all-books")}>
                         <span className="text-xl"><MdOutlineExplore/></span>
                         <span>All-Books</span>
                     </button> 
-                    <span className="flex items-center text-amber-100 justify-center  gap-x-2 px-4 py-2 border-amber-100 border-[0.8px] rounded-2xl active:scale-95 hover:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] active:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-200 ease font-semibold">
+                    <span className="flex items-center text-amber-100 justify-center  gap-x-2 px-4 py-2 border-amber-100 border-[0.8px] rounded-2xl active:scale-95 hover:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] active:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-200 ease font-semibold" onClick={()=>navigate("/signup")}>
                         <span className="text-amber-100 ">Signup</span>
                         <span><FaArrowRightLong className="text-xl text-amber-100" /></span>
                     </span>
@@ -69,15 +69,14 @@ const Hero=()=>{
                 
                 
                 <div className="flex flex-wrap items-center justify-center gap-4 w-full">
-                    <button className="flex  items-center justify-center  gap-x-2 px-4 py-2 border-zinc-500  hover:bg-zinc-800 active:bg-zinc-800  border-[0.8px] hover:border-amber-100 active:border-amber-100 rounded-2xl active:scale-95 active:text-amber-100 hover:text-amber-100 cursor-pointer transition-all duration-300 ease-in-out " >
+                    <button className="flex  items-center justify-center  gap-x-2 px-4 py-2 border-zinc-500  hover:bg-zinc-800 active:bg-zinc-800  border-[0.8px] hover:border-amber-100 active:border-amber-100 rounded-2xl active:scale-95 active:text-amber-100 hover:text-amber-100 cursor-pointer transition-all duration-300 ease-in-out " onClick={()=>navigate("/all-books")} >
                         <span className="text-xl"><MdOutlineExplore/></span>
                         <span>All-Books</span>
                     </button> 
-                    <span className="flex items-center text-amber-100 justify-center  gap-x-2 px-4 py-2 border-amber-100 border-[0.8px] rounded-2xl active:scale-95 hover:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] active:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-200 ease font-semibold">
+                    <span className="flex items-center text-amber-100 justify-center  gap-x-2 px-4 py-2 border-amber-100 border-[0.8px] rounded-2xl active:scale-95 hover:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] active:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-200 ease font-semibold" onClick={()=>navigate("/signup")}>
                         <span className="text-amber-100 ">Signup</span>
                         <span><FaArrowRightLong className="text-xl text-amber-100" /></span>
                     </span>
-
 
                 </div>
 
@@ -93,7 +92,7 @@ const Hero=()=>{
             
         </div>
 
-        <p className="text-sm text-center text-zinc-400 mt-8 w-full hidden md:block">
+        <p className="text-sm text-center mt-8 w-full hidden md:block text-red-300">
             Powered by free-tier services. You might notice slight delays — thanks for your patience and support!
         </p>
         </>

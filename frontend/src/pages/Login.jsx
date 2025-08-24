@@ -90,7 +90,11 @@ const Login2=()=>{
                         <label className="p-2" htmlFor="password">Password</label>
                         <div className="flex w-full items-center justify-between gap-x-4 ">
                             <input type={viewPassword ? "text":"password"} minLength={6} maxLength={11} id="password" name="password" placeholder="Password" className="p-2 rounded-xl outline-none border-[0.8px] w-full  border-zinc-500 focus:border-amber-100 hover:border-amber-100 text-white transition-all duration-200 ease-in-out " value={formData.password} onChange={handleChange} required/>
-                            <span className="text-2xl border-[0.8px] border-zinc-500 p-2 hover:border-amber-100 hover:text-amber-100 rounded-xl hover:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-200 ease-in-out active:scale-95 active:border-amber-100 active:text-amber-100  active:shadow-[0px_0px_8px_rgba(253,230,138,0.5)]" onClick={()=>setviewPassword((prev)=>!prev)}>{viewPassword ? <IoMdEyeOff/>:<MdOutlineRemoveRedEye/>}</span>
+                            {/* <span className="text-2xl border-[0.8px] border-zinc-500 p-2 hover:border-amber-100 hover:text-amber-100 rounded-xl hover:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-200 ease-in-out active:scale-95 active:border-amber-100 active:text-amber-100  active:shadow-[0px_0px_8px_rgba(253,230,138,0.5)]" onClick={()=>setviewPassword((prev)=>!prev)}>{viewPassword ? <IoMdEyeOff/>:<MdOutlineRemoveRedEye/>}</span> */}
+                            <button type="button" className="text-2xl border-[0.8px] border-zinc-500 p-2 hover:border-amber-100 hover:text-amber-100 rounded-xl hover:shadow-[0px_0px_8px_rgba(253,230,138,0.5)] cursor-pointer transition-all duration-200 ease-in-out active:scale-95 active:border-amber-100 active:text-amber-100  active:shadow-[0px_0px_8px_rgba(253,230,138,0.5)]" onClick={() => setviewPassword((prev) => !prev)}>
+                                {viewPassword ? <IoMdEyeOff /> : <MdOutlineRemoveRedEye />}
+                            </button>
+
                         </div>
                         <div className="ps-1 pt-1 text-xs md:text-sm text-amber-100" >Please use 6-11 letters and numbers only.</div>
                     </div>

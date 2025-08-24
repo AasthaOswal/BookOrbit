@@ -91,7 +91,7 @@ const CategoryBooks2=()=>{
             
                 <h1 className="text-xl text-center md:text-2xl font-bold my-4 text-white">
                     <div className="flex flex-wrap flex-grow sm:flex-row gap-x-2 text-center items-center justify-center mb-12">
-                        <span className="text-center">Popular Books: </span> 
+                        <span className="text-center">Popular Genres: </span> 
                         <span className="text-amber-100 italic text-center">Romance Books</span>
                     </div>
                 </h1>
@@ -113,7 +113,12 @@ const CategoryBooks2=()=>{
 
                 
                 
-                <h1 className="text-xl text-center md:text-2xl font-bold my-12 text-white">Popular Genres: <span className="text-amber-100 italic">Self-Help Books</span></h1>
+                <h1 className="text-xl text-center md:text-2xl font-bold my-4 text-white">
+                    <div className="flex flex-wrap flex-grow sm:flex-row gap-x-2 text-center items-center justify-center mb-12">
+                        <span className="text-center">Popular Genres: </span> 
+                        <span className="text-amber-100 italic text-center">Self-Help Books</span>
+                    </div>
+                </h1>
                 {!selfHelpBooks && <><SimpleLoader/></>  }
                 {selfHelpBooks && selfHelpBooks.length===0 && <p  className="text-center">No Books Found</p> }
                 {selfHelpBooks && selfHelpBooks.length>0 && <>
