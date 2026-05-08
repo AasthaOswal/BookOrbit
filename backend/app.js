@@ -35,6 +35,13 @@ app.use("/api/v1/cart", cartRoutes);
 app.use("/api/v1/orders",orderRoutes);
 
 const port = process.env.PORT;
+
+
+app.get("/", (req,res)=>{
+  res.status(200).json({success : true, message: "Server is running"});
+});
+
+
 app.listen(port, () => {
     console.log("Server running ");
 });
