@@ -36,7 +36,7 @@ const Cart=()=>{
 
     const getCart=async ()=>{
         try{
-            const response=await axios.get(`${BACKEND}/api/v1/cart/`, {withCredentials:true});
+            const response=await axios.get(`${BACKEND}/api/v1/cart`, {withCredentials:true});
             // setCart(response.data.cartData);
             const cartWithQuantity=response.data.cartData.map((item)=>({...item, quantity:1}));
             // console.log(cartWithQuantity);
