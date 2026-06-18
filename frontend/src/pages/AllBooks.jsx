@@ -81,7 +81,14 @@ const AllBooks=()=>{
             setIsLoading(true);
             setResponseMsg(""); // clear old message
             const queryString = searchParams.toString();
-            const res = await axios.get(`${BACKEND}/api/v1/books/?${queryString}`);
+
+            const url = queryString
+            ? `${BACKEND}/api/v1/books?${queryString}`
+            : `${BACKEND}/api/v1/books`;
+
+            console.log("REQUEST URL:", url);
+
+            const res = await axios.get(url);
             console.log(res);
             
 
