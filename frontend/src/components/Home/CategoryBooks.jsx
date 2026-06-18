@@ -50,7 +50,7 @@ const CategoryBooks2=()=>{
 
     const getSelfHelpBooks=async ()=>{
         try {
-            const response=await axios.get(`${BACKEND}/api/v1/books/?category=Self-Help`);
+            const response=await axios.get(`${BACKEND}/api/v1/books?category=Self-Help`);
             setSelfHelpBooks(response.data.books);
         } catch (error) {
             return toast.error("Error Occured, Please Check Internet or Try Again Later.");
@@ -59,7 +59,7 @@ const CategoryBooks2=()=>{
 
     const getRomanceBooks=async ()=>{
         try {
-            const response=await axios.get(`${BACKEND}/api/v1/books/?category=Romance`);
+            const response=await axios.get(`${BACKEND}/api/v1/books?category=Romance`);
             setRomanceBooks(response.data.books);
         } catch (error) {
             return toast.error("Error Occured, Please Check Internet or Try Again Later.");

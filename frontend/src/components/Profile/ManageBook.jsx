@@ -90,7 +90,7 @@ const ManageBook2=()=>{
         try {
             const queryString = searchParams.toString();
             const res = await axios.get(
-            `${BACKEND}/api/v1/books/?${queryString}`);
+            `${BACKEND}/api/v1/books?${queryString}`);
             // console.log(queryString);
             // console.log(res);
             setSearchBooks(res.data.books);
