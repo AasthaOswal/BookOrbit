@@ -59,6 +59,7 @@ const AllBooks=()=>{
     const getUserDetails=async ()=>{
         try {
             const response=await axios.get(`${BACKEND}/api/v1/users/me`, {withCredentials:true});
+            console.log(response)
         // console.log(response.data.userData.favourite);
             setUserFav(response.data.userData.favourite);
         // console.log(userDetails);
@@ -81,7 +82,7 @@ const AllBooks=()=>{
             setResponseMsg(""); // clear old message
             const queryString = searchParams.toString();
             const res = await axios.get(`${BACKEND}/api/v1/books/?${queryString}`);
-            // console.log(res);
+            console.log(res);
             
 
             setSearchBooks(res.data.books || []); 
