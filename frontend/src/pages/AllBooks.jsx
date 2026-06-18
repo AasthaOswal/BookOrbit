@@ -13,7 +13,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 const AllBooks=()=>{
 
-    const BACKEND = import.meta.env.VITE_BACKEND_URL;
+    const BACKEND = import.meta.env.VITE_BACKEND_URL || "";
 
     const [isLoading,setIsLoading]=useState(false);
 
