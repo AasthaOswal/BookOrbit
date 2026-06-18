@@ -10,5 +10,17 @@
     "mongodb": "^6.17.0",
     "mongoose": "^8.16.0",
     "validator": "^13.15.15"
-  }
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
