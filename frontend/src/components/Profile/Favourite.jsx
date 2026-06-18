@@ -21,7 +21,7 @@ const Favourite=()=>{
 
     const getFavBooks=async ()=>{
         try {
-            const response=await axios.get(`${BACKEND}/api/v1/favourites/`, {withCredentials:true});
+            const response=await axios.get(`${BACKEND}/api/v1/favourites`, {withCredentials:true});
             setFavBooks(response.data.favouriteData);
         } catch (error) {
             // console.log(error);
